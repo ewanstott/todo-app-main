@@ -23,14 +23,18 @@
   letter-spacing: 10px;
 }
 
-#initialToDo {
+#todo {
   margin-top: 40px;
   margin-left: 30px;
-  height: 35px;
+  height: 40px;
   width: 300px;
   background-color: white;
   border-radius: 5px;
   text-indent: 40px;
+}
+
+.done {
+  text-decoration: line-through;
 }
 
 .input-container {

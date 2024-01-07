@@ -15,6 +15,7 @@
       href="./images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="./entry.js"></script>
     <title>Todo app</title>
   </head>
   <body>
@@ -22,23 +23,27 @@
       <h1>Todo</h1>
       <div class="input-container">
         <i class="fa-regular fa-circle"></i>
-        <input
-          type="text"
-          id="initialToDo"
-          placeholder="Create a new todo..."
-        />
+        <label for="input"></label>
+        <input type="text" id="todo" placeholder="Create a new todo..." />
+        <button id="add">Add (temp)</button>
       </div>
+
+      <p id="error"></p>
     </div>
     <div class="container">
-      <div class="controls">
-        <!-- <label for="input">Todo</label> -->
+      <div>
+        <ul id="todoList"></ul>
       </div>
-      <!-- <div id="root"></div> -->
     </div>
 
     <!-- Add dynamic number -->
     items left All Active Completed Clear Completed Drag and drop to reorder
     list
+    <div class="allActiveCompleted">
+      <button id="showAll">All</button>
+      <button id="sortByActive">Active</button>
+      <button id="sortByCompleted">Completed</button>
+    </div>
   </body>
   <footer>
     <div class="attribution">
