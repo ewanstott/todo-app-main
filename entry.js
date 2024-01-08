@@ -1,13 +1,8 @@
-//state
-const todoList = [
-  { id: 1, title: "80km cycle", done: false },
-  { id: 2, title: "Buy cheese", done: true },
-  { id: 3, title: "Book flights", done: false },
-  { id: 4, title: "New house research", done: false },
-];
+import { todoList } from "./js/todoList.js";
+
 let todo = "";
-let completedTodoList = false;
-// let activeTodoList = false;
+let completedTodos = [];
+let activeTodos = [];
 
 //DOM refs
 const todoListRef = document.getElementById("todoList");
@@ -67,25 +62,23 @@ const toggleDone = (id) => {
 
 //FUNCTIONS TO FILTER COMPLETED/ACTIVE/ALL
 //Listens for click on completed button
-completedRef.addEventListener("click", (e) => {
-  const completedTodos = toggleDone(true);
+completedRef.addEventListener("click", () => {
+  completedTodos = todoList.filter((todo) => todo.done);
   updateTodoList(completedTodos);
+  console.log(completedTodos);
 });
 
-// const filterCompletedTodos = () => {
-//     const completedTodos = todoList.filter((todo) => todo.done);
-//     updateTodoList(completedTodos);
-//   };
-
 //Listens for click on active button
-activeRef.addEventListener("click", (e) => {
-  const activeTodos = toggleDone(false);
+activeRef.addEventListener("click", () => {
+  activeTodos = todoList.filter((todo) => !todo.done);
   updateTodoList(activeTodos);
+  console.log(activeTodos);
 });
 
 // Event listener for the "Show All" button
 allRef.addEventListener("click", () => {
   updateTodoList(todoList);
+  console.log(todoList);
 });
 //FUNCTIONS TO FILTER COMPLETED/ACTIVE/ALL^^^
 
@@ -123,8 +116,9 @@ addRef.addEventListener("click", () => {
   updateTodoList(); //update DOM
 });
 
-const updateTodoList = () => {
-  const html = todoList.map((todo) => {
+const updateTodoList = (filteredTodos) => {
+  const todosToDisplay = filteredTodos || todoList;
+  const html = todosToDisplay.map((todo) => {
     return `<li id=${todo.id} class="${todo.done ? "done" : "undone"}">${
       todo.title
     }</li>`;
