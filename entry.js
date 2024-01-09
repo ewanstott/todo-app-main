@@ -14,6 +14,7 @@ const errorRef = document.getElementById("error");
 const completedRef = document.getElementById("completed");
 const activeRef = document.getElementById("active");
 const allRef = document.getElementById("showAll");
+const deleteRef = document.getElementById("delete");
 
 //todos aka todoList
 
@@ -84,8 +85,18 @@ allRef.addEventListener("click", () => {
 
 //Listens for a click on a todo
 todoListRef.addEventListener("click", (e) => {
-  toggleDone(Number(e.target.id));
+  // Check if the clicked element is a todo item
+  if (targetElement.tagName === "LI") {
+    toggleDone(Number(e.target.id));
+  }
+  // Check if the clicked element is a delete button
+  if (targetElement.classList.contains("delete-btn")) {
+    const todoId = targetElement.dataset.id;
+    deleteTodo(todoId);
+  }
 });
+
+//DeleteTodo function
 
 //Listens for Todo input
 todoRef.addEventListener("input", (e) => {
@@ -99,7 +110,10 @@ todoRef.addEventListener("keypress", (e) => {
   }
 });
 
-//Listen for add click
+//Listen for delete button
+// deleteRef.addEventListener("click", () => {});
+
+//add Todo
 const addTodo = () => {
   // Defensive checks
   // Validate user input

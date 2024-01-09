@@ -22,7 +22,6 @@
   text-transform: uppercase;
   letter-spacing: 10px;
 }
-
 #todo {
   margin-top: 40px;
   margin-left: 30px;
@@ -32,6 +31,15 @@
   border-radius: 5px;
   text-indent: 40px;
 }
+
+/* #todoList {
+  margin-left: 30px;
+  height: 40px;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  text-indent: 40px;
+} */
 
 .done {
   text-decoration: line-through;
@@ -46,7 +54,7 @@
   left: 45px;
   top: 76%;
   transform: translateY(-50%);
-  color: #d8d8d8; /* Adjust the color as needed */
+  color: #d8d8d8;
 }
 
 .attribution {
