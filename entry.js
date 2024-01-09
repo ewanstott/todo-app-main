@@ -30,7 +30,7 @@ const toggleDone = (id) => {
 
 //completed only
 
-// //sortByCompleted
+//sortByCompleted
 // sortByCompleted.addEventListener("click", () => {
 //   todoList.sort((a, b) => {
 //     if (a.done) {
@@ -91,13 +91,21 @@ todoListRef.addEventListener("click", (e) => {
 todoRef.addEventListener("input", (e) => {
   todo = e.target.value;
 });
+
+//Listen for "Enter" key press
+todoRef.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    addTodo();
+  }
+});
+
 //Listen for add click
-addRef.addEventListener("click", () => {
-  //defensive checks
-  //validate user input
+const addTodo = () => {
+  // Defensive checks
+  // Validate user input
   if (!todo) {
     errorRef.innerHTML = "Please type in your Todo item to add!";
-    //checks for empty string i.e. if nothing in todo, return
+    // Checks for an empty string i.e., if nothing in todo, return
     return;
   }
 
@@ -112,16 +120,17 @@ addRef.addEventListener("click", () => {
   }
 
   errorRef.innerHTML = ""; //resets dom error message
-  todoList.push({ id: Math.random(), title: todo, done: false }); //add item to todoList array
+  todoList.unshift({ id: Math.random(), title: todo, done: false }); //add item to todoList array
   updateTodoList(); //update DOM
-});
+  todoRef.value = ""; //clears input field
+};
 
 const updateTodoList = (filteredTodos) => {
   const todosToDisplay = filteredTodos || todoList;
   const html = todosToDisplay.map((todo) => {
     return `<li id=${todo.id} class="${todo.done ? "done" : "undone"}">${
       todo.title
-    }</li>`;
+    }<button class="delete-btn" id="${todo.id}">X</button></li>`;
   });
   todoListRef.innerHTML = html.join("");
 };
