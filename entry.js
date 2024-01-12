@@ -1,4 +1,5 @@
-import { todoList } from "./js/todoList.js";
+// import { todoList } from "./js/todoList.js";
+// import { deleteTodo } from "./js/todoUtil";
 
 let todo = "";
 let completedTodos = [];
@@ -14,9 +15,16 @@ const errorRef = document.getElementById("error");
 const completedRef = document.getElementById("completed");
 const activeRef = document.getElementById("active");
 const allRef = document.getElementById("showAll");
-const deleteRef = document.getElementById("delete");
+const deleteRef = document.getElementById("delete-btn");
 
 //todos aka todoList
+
+const todoList = [
+  { id: 1, title: "80km cycle", done: false },
+  { id: 2, title: "Buy cheese", done: true },
+  { id: 3, title: "Book flights", done: false },
+  { id: 4, title: "New house research", done: false },
+];
 
 //toggles done / undone
 const toggleDone = (id) => {
@@ -85,18 +93,8 @@ allRef.addEventListener("click", () => {
 
 //Listens for a click on a todo
 todoListRef.addEventListener("click", (e) => {
-  // Check if the clicked element is a todo item
-  if (targetElement.tagName === "LI") {
-    toggleDone(Number(e.target.id));
-  }
-  // Check if the clicked element is a delete button
-  if (targetElement.classList.contains("delete-btn")) {
-    const todoId = targetElement.dataset.id;
-    deleteTodo(todoId);
-  }
+  toggleDone(Number(e.target.id));
 });
-
-//DeleteTodo function
 
 //Listens for Todo input
 todoRef.addEventListener("input", (e) => {
@@ -110,8 +108,29 @@ todoRef.addEventListener("keypress", (e) => {
   }
 });
 
-//Listen for delete button
-// deleteRef.addEventListener("click", () => {});
+// //Listen for delete button
+todoListRef.addEventListener("click", (e) => {
+  //if clicked element class contain delete-btn
+  if (e.target.classList.contains("delete-btn")) {
+    //get ID
+    const todoId = Number(e.target.id);
+    //delete
+    deleteTodo(todoId);
+  }
+});
+
+// //delete Todo
+// const deleteTodo = (id) => {
+//   // Filter out the todo with the specified id
+//   todoList = todoList.filter((todo) => todo.id !== id);
+//   updateTodoList();
+// };
+
+function deleteTodo(id) {
+  // Filter out the todo with the specified id
+  todoList = todoList.filter((todo) => todo.id !== id);
+  updateTodoList();
+}
 
 //add Todo
 const addTodo = () => {
