@@ -1,5 +1,5 @@
 // import { todoList } from "./js/todoList.js";
-// import { deleteTodo } from "./js/todoUtil";
+import { addTodo } from "./todoUtil.js";
 
 let todo = "";
 let completedTodos = [];
@@ -19,7 +19,7 @@ const deleteRef = document.getElementById("delete-btn");
 
 //todos aka todoList
 
-const todoList = [
+export let todoList = [
   { id: 1, title: "80km cycle", done: false },
   { id: 2, title: "Buy cheese", done: true },
   { id: 3, title: "Book flights", done: false },
@@ -104,7 +104,7 @@ todoRef.addEventListener("input", (e) => {
 //Listen for "Enter" key press
 todoRef.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    addTodo();
+    addTodo(todo, errorRef, todoRef);
   }
 });
 
@@ -119,46 +119,13 @@ todoListRef.addEventListener("click", (e) => {
   }
 });
 
-// //delete Todo
-// const deleteTodo = (id) => {
-//   // Filter out the todo with the specified id
-//   todoList = todoList.filter((todo) => todo.id !== id);
-//   updateTodoList();
-// };
-
 function deleteTodo(id) {
   // Filter out the todo with the specified id
   todoList = todoList.filter((todo) => todo.id !== id);
   updateTodoList();
 }
 
-//add Todo
-const addTodo = () => {
-  // Defensive checks
-  // Validate user input
-  if (!todo) {
-    errorRef.innerHTML = "Please type in your Todo item to add!";
-    // Checks for an empty string i.e., if nothing in todo, return
-    return;
-  }
-
-  //check no duplicates
-  const duplicate = todoList.some((item) => {
-    return item.title === todo;
-  });
-  //if duplicate true, return
-  if (duplicate) {
-    errorRef.innerHTML = "You already added this item!";
-    return;
-  }
-
-  errorRef.innerHTML = ""; //resets dom error message
-  todoList.unshift({ id: Math.random(), title: todo, done: false }); //add item to todoList array
-  updateTodoList(); //update DOM
-  todoRef.value = ""; //clears input field
-};
-
-const updateTodoList = (filteredTodos) => {
+export const updateTodoList = (filteredTodos) => {
   const todosToDisplay = filteredTodos || todoList;
   const html = todosToDisplay.map((todo) => {
     return `<li id=${todo.id} class="${todo.done ? "done" : "undone"}">${
