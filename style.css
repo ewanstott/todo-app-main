@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -16,33 +15,11 @@
 
 .hero > h1 {
   color: white;
-  padding-left: 20px;
+  padding-left: 30px;
   padding-top: 40px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 10px;
-}
-#todo {
-  margin-top: 40px;
-  margin-left: 30px;
-  height: 40px;
-  width: 300px;
-  background-color: white;
-  border-radius: 5px;
-  text-indent: 40px;
-}
-
-/* #todoList {
-  margin-left: 30px;
-  height: 40px;
-  width: 300px;
-  background-color: white;
-  border-radius: 5px;
-  text-indent: 40px;
-} */
-
-.done {
-  text-decoration: line-through;
 }
 
 .input-container {
@@ -57,6 +34,78 @@
   color: #d8d8d8;
 }
 
+#todo {
+  margin-top: 40px;
+  margin-left: 30px;
+  height: 40px;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  text-indent: 40px;
+}
+
+#todoList {
+  margin-left: 30px;
+  /* margin-bottom: 30px; */
+  /* height: 40px;
+  width: 300px; */
+  /* background-color: white; */
+  border-radius: 5px;
+  text-indent: 40px;
+}
+
+.list {
+  /* display: flex;
+  justify-content: space-between; */
+  /* align-items: center; */
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  /* left: 45px; */
+  /* top: 76%; */
+  margin-top: 0.2px;
+  margin-right: 48px;
+  /* width: auto; */
+  transform: translateY(-70%);
+  color: black;
+  padding: 12px;
+  font-weight: 400;
+  font-size: 12px;
+  list-style: none;
+  text-align: left;
+}
+
+.list i {
+  color: #d8d8d8;
+  margin-left: -75px;
+}
+
+/* .todo-text {
+  flex-grow: 1;
+} */
+
+/* .list span {
+  flex-grow: 1; 
+} */
+
+.done {
+  text-decoration: line-through;
+}
+
+.delete-btn {
+  cursor: pointer;
+  color: #d8d8d8;
+  border: none;
+  background-color: white;
+}
+.allActiveCompleted {
+  cursor: pointer;
+}
+
+.container {
+  background-color: hsl(0, 0%, 98%);
+}
+
 .attribution {
   font-size: 11px;
   text-align: center;
@@ -65,6 +114,9 @@
   color: hsl(228, 45%, 44%);
 }
 
+.footer {
+  background-color: hsl(0, 0%, 98%);
+}
 /* display: flex;
   justify-content: center;
   align-items: center; */

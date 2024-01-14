@@ -33,7 +33,6 @@ const toggleDone = (id) => {
     return todo.id === id;
   });
   todoList[index].done = !todoList[index].done;
-
   updateTodoList();
 };
 
@@ -128,7 +127,9 @@ function deleteTodo(id) {
 export const updateTodoList = (filteredTodos) => {
   const todosToDisplay = filteredTodos || todoList;
   const html = todosToDisplay.map((todo) => {
-    return `<li id=${todo.id} class="${todo.done ? "done" : "undone"}">${
+    return `<li id=${todo.id} class="list ${
+      todo.done ? "done" : "undone"
+    }"> <i class="far fa-circle"></i> ${
       todo.title
     }<button class="delete-btn" id="${todo.id}">X</button></li>`;
   });
