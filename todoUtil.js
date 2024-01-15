@@ -1,4 +1,4 @@
-import { todoList, updateTodoList } from "./entry.js";
+import { todoList, updateTodoList, updateItemsLeftCount } from "./entry.js";
 
 const errorRef = document.getElementById("error");
 
@@ -25,12 +25,6 @@ export const addTodo = (todo, errorRef, todoRef) => {
   errorRef.innerHTML = ""; //resets dom error message
   todoList.unshift({ id: Math.random(), title: todo, done: false }); //add item to todoList array
   updateTodoList(); //update DOM
+  updateItemsLeftCount();
   todoRef.value = ""; //clears input field
 };
-
-// //delete function
-// export function deleteTodo(id) {
-//   // Filter out the todo with the specified id
-//   todoList = todoList.filter((todo) => todo.id !== id);
-//   updateTodoList();
-// }

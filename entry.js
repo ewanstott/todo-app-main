@@ -16,6 +16,9 @@ const completedRef = document.getElementById("completed");
 const activeRef = document.getElementById("active");
 const allRef = document.getElementById("showAll");
 const deleteRef = document.getElementById("delete-btn");
+const clearCompletedRef = document.getElementById("clearCompleted");
+const itemsLeftRef = document.getElementById("itemsLeft");
+const circleRef = document.querySelector(".fa-circle");
 
 //todos aka todoList
 
@@ -28,15 +31,13 @@ export let todoList = [
 
 //toggles done / undone
 const toggleDone = (id) => {
-  console.log(id);
   const index = todoList.findIndex((todo) => {
     return todo.id === id;
   });
   todoList[index].done = !todoList[index].done;
   updateTodoList();
+  updateItemsLeftCount();
 };
-
-//completed only
 
 //sortByCompleted
 // sortByCompleted.addEventListener("click", () => {
@@ -90,10 +91,25 @@ allRef.addEventListener("click", () => {
 });
 //FUNCTIONS TO FILTER COMPLETED/ACTIVE/ALL^^^
 
-//Listens for a click on a todo
+////////NOT WORKING////////////////
+//Listens for a click on a todo or circle icon
 todoListRef.addEventListener("click", (e) => {
-  toggleDone(Number(e.target.id));
+  const todoId = Number(e.target.id);
+  if (e.target.classList.contains("fa-circle")) {
+    toggleDone(todoId);
+  } else {
+    toggleDone(todoId);
+  }
 });
+
+// //Listens for a click on a todo
+// todoListRef.addEventListener("click", (e) => {
+//   toggleDone(Number(e.target.id));
+// });
+// //Listens for a click on circle icon
+// circleRef.addEventListener("click", (e) => {
+//   toggleDone(Number(e.target.id));
+// });
 
 //Listens for Todo input
 todoRef.addEventListener("input", (e) => {
@@ -115,17 +131,47 @@ todoListRef.addEventListener("click", (e) => {
     const todoId = Number(e.target.id);
     //delete
     deleteTodo(todoId);
+    updateItemsLeftCount();
   }
 });
 
+//Listens for clearCompleted
+clearCompletedRef.addEventListener("click", (e) => {
+  clearCompleted();
+});
+
+//FUNCTIONS
+//when moving delete function into seperate file, not working - why??
+//Delete function
 function deleteTodo(id) {
   // Filter out the todo with the specified id
   todoList = todoList.filter((todo) => todo.id !== id);
   updateTodoList();
 }
 
+//Items Left Count
+export function updateItemsLeftCount() {
+  const itemsLeftCount = todoList.filter((todo) => !todo.done).length;
+  //Display count
+  itemsLeftRef.textContent = itemsLeftCount;
+}
+
+//Clear Completed
+function clearCompleted() {
+  // Remove completed items from the todoList
+  todoList = todoList.filter((todo) => !todo.done); // !todo.done checks if the done property of the current to-do item is false aka filter out completed (done) tasks.
+  // Update the displayed list
+  updateTodoList();
+  // Update the items left count
+  updateItemsLeftCount();
+}
+
+//Local Storage
+
 export const updateTodoList = (filteredTodos) => {
+  // If filteredTodos is provided, use it; otherwise, use the entire todoList
   const todosToDisplay = filteredTodos || todoList;
+  // Map each todo in the todosToDisplay array to an HTML string
   const html = todosToDisplay.map((todo) => {
     return `<li id=${todo.id} class="list ${
       todo.done ? "done" : "undone"
@@ -133,6 +179,8 @@ export const updateTodoList = (filteredTodos) => {
       todo.title
     }<button class="delete-btn" id="${todo.id}">X</button></li>`;
   });
+  // Join the array of HTML strings into a single string and set it as the innerHTML of the todoListRef element
   todoListRef.innerHTML = html.join("");
 };
 updateTodoList();
+updateItemsLeftCount();
