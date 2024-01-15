@@ -86,6 +86,8 @@ body {
   font-size: 16px;
 }
 
+/* ///ADD DIV TO CIRCLE AND USE FLEX  */
+
 .done {
   text-decoration: line-through;
   color: grey;

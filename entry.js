@@ -106,7 +106,8 @@ todoListRef.addEventListener("click", (e) => {
 // todoListRef.addEventListener("click", (e) => {
 //   toggleDone(Number(e.target.id));
 // });
-// //Listens for a click on circle icon
+
+// // //Listens for a click on circle icon
 // circleRef.addEventListener("click", (e) => {
 //   toggleDone(Number(e.target.id));
 // });
@@ -175,7 +176,7 @@ export const updateTodoList = (filteredTodos) => {
   const html = todosToDisplay.map((todo) => {
     return `<li id=${todo.id} class="list ${
       todo.done ? "done" : "undone"
-    }"> <i class="far fa-circle"></i> ${
+    }"> <i class="far fa-circle" id=${todo.id} ></i> ${
       todo.title
     }<button class="delete-btn" id="${todo.id}">X</button></li>`;
   });
