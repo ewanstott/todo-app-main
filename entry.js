@@ -1,4 +1,3 @@
-// import { todoList } from "./js/todoList.js";
 import { addTodo } from "./todoUtil.js";
 
 let todo = "";
