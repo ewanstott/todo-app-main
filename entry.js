@@ -91,7 +91,6 @@ allRef.addEventListener("click", () => {
 });
 //FUNCTIONS TO FILTER COMPLETED/ACTIVE/ALL^^^
 
-////////NOT WORKING////////////////
 //Listens for a click on a todo or circle icon
 todoListRef.addEventListener("click", (e) => {
   const todoId = Number(e.target.id);
@@ -142,7 +141,6 @@ clearCompletedRef.addEventListener("click", (e) => {
 });
 
 //FUNCTIONS
-//when moving delete function into seperate file, not working - why??
 //Delete function
 function deleteTodo(id) {
   // Filter out the todo with the specified id
@@ -174,14 +172,17 @@ export const updateTodoList = (filteredTodos) => {
   const todosToDisplay = filteredTodos || todoList;
   // Map each todo in the todosToDisplay array to an HTML string
   const html = todosToDisplay.map((todo) => {
-    return `<li id=${todo.id} class="list ${
+    return `<li class="list id=${todo.id} ${
       todo.done ? "done" : "undone"
-    }"> <i class="far fa-circle" id=${todo.id} ></i> ${
-      todo.title
-    }<button class="delete-btn" id="${todo.id}">X</button></li>`;
+    }"> <div class="list-content"><i class="far fa-circle" id=${
+      todo.id
+    } ></i> ${todo.title}</div><button class="delete-btn" id="${
+      todo.id
+    }">X</button></li>`;
   });
   // Join the array of HTML strings into a single string and set it as the innerHTML of the todoListRef element
   todoListRef.innerHTML = html.join("");
 };
 updateTodoList();
 updateItemsLeftCount();
+//UPDATE EVENT LISTENER FOR CIRCLE AND TODO ^^ to fix toggleDone

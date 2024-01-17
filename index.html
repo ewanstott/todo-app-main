@@ -20,10 +20,10 @@
   </head>
   <body>
     <div class="hero">
-      <h1>Todo</h1>
+      <div class="header"><h1>Todo</h1></div>
       <div class="input-container">
-        <i class="fa-regular fa-circle"></i>
         <label for="input"></label>
+        <i class="fa-regular fa-circle"></i>
         <input type="text" id="todo" placeholder="Create a new todo..." />
       </div>
 
@@ -36,12 +36,11 @@
           <p><span id="itemsLeft"></span> items left</p>
           <button id="clearCompleted">Clear Completed</button>
         </div>
-      </div>
-
-      <div class="allActiveCompleted">
-        <button id="showAll">All</button>
-        <button id="active">Active</button>
-        <button id="completed">Completed</button>
+        <div class="allActiveCompleted">
+          <button id="showAll">All</button>
+          <button id="active">Active</button>
+          <button id="completed">Completed</button>
+        </div>
       </div>
     </div>
 
