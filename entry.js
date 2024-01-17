@@ -8,6 +8,7 @@ let activeTodos = [];
 //DOM refs
 const todoListRef = document.getElementById("todoList");
 const todoRef = document.getElementById("todo");
+const listContentRef = document.getElementById("list-content");
 const addRef = document.getElementById("add");
 const errorRef = document.getElementById("error");
 // const sortByCompleted = document.getElementById("sortByCompleted");
@@ -93,6 +94,7 @@ allRef.addEventListener("click", () => {
 
 //Listens for a click on a todo or circle icon
 todoListRef.addEventListener("click", (e) => {
+  console.log(todoListRef);
   const todoId = Number(e.target.id);
   if (e.target.classList.contains("fa-circle")) {
     toggleDone(todoId);
@@ -100,6 +102,18 @@ todoListRef.addEventListener("click", (e) => {
     toggleDone(todoId);
   }
 });
+
+// // Listens for a click on a todo or circle icon
+// todoListRef.addEventListener("click", (e) => {
+//   const todoId = Number(e.target.id);
+
+//   // Check if the clicked element is the text content of the todo item
+//   if (e.target.classList.contains("list-content")) {
+//     toggleDone(todoId);
+//   } else if (e.target.classList.contains("fa-circle")) {
+//     toggleDone(todoId);
+//   }
+// });
 
 // //Listens for a click on a todo
 // todoListRef.addEventListener("click", (e) => {
