@@ -92,38 +92,15 @@ allRef.addEventListener("click", () => {
 });
 //FUNCTIONS TO FILTER COMPLETED/ACTIVE/ALL^^^
 
-//Listens for a click on a todo or circle icon
+// //Listens for a click on a todo
 todoListRef.addEventListener("click", (e) => {
-  console.log(todoListRef);
-  const todoId = Number(e.target.id);
-  if (e.target.classList.contains("fa-circle")) {
-    toggleDone(todoId);
-  } else {
-    toggleDone(todoId);
-  }
+  toggleDone(Number(e.target.id));
 });
 
-// // Listens for a click on a todo or circle icon
-// todoListRef.addEventListener("click", (e) => {
-//   const todoId = Number(e.target.id);
-
-//   // Check if the clicked element is the text content of the todo item
-//   if (e.target.classList.contains("list-content")) {
-//     toggleDone(todoId);
-//   } else if (e.target.classList.contains("fa-circle")) {
-//     toggleDone(todoId);
-//   }
-// });
-
-// //Listens for a click on a todo
-// todoListRef.addEventListener("click", (e) => {
-//   toggleDone(Number(e.target.id));
-// });
-
 // // //Listens for a click on circle icon
-// circleRef.addEventListener("click", (e) => {
-//   toggleDone(Number(e.target.id));
-// });
+circleRef.addEventListener("click", (e) => {
+  toggleDone(Number(e.target.id));
+});
 
 //Listens for Todo input
 todoRef.addEventListener("input", (e) => {
@@ -186,13 +163,11 @@ export const updateTodoList = (filteredTodos) => {
   const todosToDisplay = filteredTodos || todoList;
   // Map each todo in the todosToDisplay array to an HTML string
   const html = todosToDisplay.map((todo) => {
-    return `<li class="list id=${todo.id} ${
+    return `<li id=${todo.id} class="list ${
       todo.done ? "done" : "undone"
-    }"> <div class="list-content"><i class="far fa-circle" id=${
-      todo.id
-    } ></i> ${todo.title}</div><button class="delete-btn" id="${
-      todo.id
-    }">X</button></li>`;
+    }"><i class="far fa-circle" id="${todo.id}"></i> ${
+      todo.title
+    }<button class="delete-btn" id="${todo.id}">X</button></li>`;
   });
   // Join the array of HTML strings into a single string and set it as the innerHTML of the todoListRef element
   todoListRef.innerHTML = html.join("");
