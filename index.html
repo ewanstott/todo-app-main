@@ -8,6 +8,7 @@
       src="https://kit.fontawesome.com/ee1ddee0d2.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/joi-browser@13.4.0/dist/joi-browser.min.js"></script>
     <link
       rel="icon"
       type="image/png"
@@ -24,7 +25,16 @@
       <div class="input-container">
         <label for="input"></label>
         <i class="fa-regular fa-circle"></i>
-        <input type="text" id="todo" placeholder="Create a new todo..." />
+        <!-- <form action="" method="get" id="myForm"> -->
+        <!-- <label for="name">Todo</label> -->
+        <input
+          type="text"
+          name="name"
+          id="todo"
+          placeholder="Create a new todo..."
+        />
+        <p id="error"></p>
+        <!-- </form> -->
       </div>
 
       <p id="error"></p>
