@@ -1,5 +1,7 @@
 import { addTodo } from "./todoUtil.js";
 
+//ADD JOI validation library
+
 let todo = "";
 let completedTodos = [];
 let activeTodos = [];
