@@ -26,7 +26,7 @@ const circleRef = document.querySelector(".fa-circle");
 
 const schema = {
   // name: Joi.string().min(3).max(10),
-  name: Joi.string().trim().alphanum().min(3).max(50).required(),
+  todo: Joi.string().trim().alphanum().min(3).max(50).required(),
 };
 
 const userInput = {};
@@ -34,6 +34,10 @@ const userInput = {};
 todoRef.addEventListener("input", (e) => {
   userInput[e.target.name] = e.target.value;
   console.log(userInput);
+
+  //remove old errors
+  const errorRefs = document.getElementById("error");
+  errorRefs.innerHTML = "";
 
   Joi.validate(userInput, schema, { abortEarly: false }, (errors, results) => {
     console.log(errors.details);
@@ -43,12 +47,12 @@ todoRef.addEventListener("input", (e) => {
     errors.details.forEach((error) => {
       errorsMod[error.context.key] = error.message;
     });
-    console.log(errorsMod);
 
-    // 1h.58s
-    for (const error in errorsMod) {
-      document.getElementById("");
-    }
+    errorRefs.innerHTML = Object.values(errorsMod).join("<br>");
+
+    // for (const error in errorsMod) {
+    //   document.getElementById("error").innerHTML = errorsMod[error];
+    // }
   });
 });
 
