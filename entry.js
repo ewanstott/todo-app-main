@@ -45,6 +45,7 @@ todoRef.addEventListener("input", (e) => {
     });
     console.log(errorsMod);
 
+    // 1h.58s
     for (const error in errorsMod) {
       document.getElementById("");
     }
