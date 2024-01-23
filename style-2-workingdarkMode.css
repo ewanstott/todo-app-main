@@ -24,13 +24,9 @@ body.dark-mode {
 }
 
 .header > h1 {
-  position: relative;
-  top: 35px;
-  left: 10%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
   color: white;
+  padding-left: 30px;
+  padding-top: 40px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 10px;
@@ -54,7 +50,7 @@ body.dark-mode {
 .lightDarkToggle {
   position: absolute;
   top: 35px;
-  right: 10%;
+  right: 60px;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -69,11 +65,6 @@ body.dark-mode {
   display: none;
 }
 
-.sun-icon,
-.moon-icon {
-  z-index: 2;
-}
-
 .dark-mode .moon-icon {
   display: block;
 }
@@ -83,15 +74,16 @@ body.dark-mode {
 }
 
 #todo {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 80px;
+  /* display: flex;
+  justify-content: space-between; */
+  /* align-items: flex-start; */
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
   height: 40px;
   min-width: 200px;
+  /* width: 70%; */
   max-width: 500px;
   background-color: white;
   border-radius: 5px;
@@ -122,11 +114,8 @@ body.dark-mode {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-left: 30px;
-  margin-right: 30px; */
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+  margin-left: 30px;
+  margin-right: 30px;
   height: 40px;
   border-radius: 2px;
   background-color: white;
