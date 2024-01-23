@@ -28,12 +28,31 @@ const lightDarkRef = document.getElementById("lightDarkToggle");
 joiValidation(todoRef, errorRef);
 ///////////////////////////////////////////
 
-export let todoList = [
-  { id: 1, title: "80km cycle", done: false },
-  { id: 2, title: "Buy cheese", done: true },
-  { id: 3, title: "Book flights", done: false },
-  { id: 4, title: "New house research", done: false },
-];
+// export let todoList = [
+//   { id: 1, title: "80km cycle", done: false },
+//   { id: 2, title: "Buy cheese", done: true },
+//   { id: 3, title: "Book flights", done: false },
+//   { id: 4, title: "New house research", done: false },
+// ];
+
+export let todoList = [];
+
+// Retrieve todoList from local storage
+const storedTodoList = localStorage.getItem("todoList");
+if (storedTodoList) {
+  todoList = JSON.parse(storedTodoList);
+} else {
+  // If no todoList in local storage, use the default initial todo list
+  todoList = [
+    { id: 1, title: "80km cycle", done: false },
+    { id: 2, title: "Buy cheese", done: true },
+    { id: 3, title: "Book flights", done: false },
+    { id: 4, title: "New house research", done: false },
+  ];
+
+  // Save initial todoList to local storage
+  saveToLocalStorage(todoList);
+}
 
 //toggles done / undone
 const toggleDone = (id) => {
@@ -164,9 +183,8 @@ function clearCompleted() {
   updateTodoList();
   // Update the items left count
   updateItemsLeftCount();
+  saveToLocalStorage(todoList);
 }
-
-//Local Storage
 
 export const updateTodoList = (filteredTodos) => {
   // If filteredTodos is provided, use it; otherwise, use the entire todoList
@@ -181,7 +199,15 @@ export const updateTodoList = (filteredTodos) => {
   });
   // Join the array of HTML strings into a single string and set it as the innerHTML of the todoListRef element
   todoListRef.innerHTML = html.join("");
+
+  saveToLocalStorage(todoList);
 };
+
+// Save to local storage function
+function saveToLocalStorage(data) {
+  localStorage.setItem("todoList", JSON.stringify(data));
+}
+
 updateTodoList();
 updateItemsLeftCount();
 //UPDATE EVENT LISTENER FOR CIRCLE AND TODO ^^ to fix toggleDone

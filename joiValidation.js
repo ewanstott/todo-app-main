@@ -14,6 +14,12 @@ export function joiValidation(todoRef, errorRef) {
     const errorRefs = document.getElementById("error");
     errorRefs.innerHTML = "";
 
+    // Check if the input is empty
+    if (!userInput.todo) {
+      errorRef.innerHTML = ""; // Clear the error message
+      return;
+    }
+
     Joi.validate(
       userInput,
       schema,
