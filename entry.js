@@ -22,12 +22,11 @@ const deleteRef = document.getElementById("delete-btn");
 const clearCompletedRef = document.getElementById("clearCompleted");
 const itemsLeftRef = document.getElementById("itemsLeft");
 const circleRef = document.querySelector(".fa-circle");
+const lightDarkRef = document.getElementById("lightDarkToggle");
 
 ////////////JOI VALIDATION////////////////
 joiValidation(todoRef, errorRef);
 ///////////////////////////////////////////
-
-//todos aka todoList
 
 export let todoList = [
   { id: 1, title: "80km cycle", done: false },
@@ -46,6 +45,11 @@ const toggleDone = (id) => {
   updateItemsLeftCount();
 };
 
+//toggle dark/light
+lightDarkRef.addEventListener("click", () => {
+  todoListRef.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark-mode");
+});
 //sortByCompleted
 // sortByCompleted.addEventListener("click", () => {
 //   todoList.sort((a, b) => {

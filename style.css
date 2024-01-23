@@ -10,10 +10,17 @@
 body {
   background-color: hsl(0, 0%, 98%);
 }
+body.dark-mode {
+  background-color: hsl(235, 21%, 11%);
+}
 
 .hero {
   height: 200px;
   background-image: url(./images/bg-mobile-light.jpg);
+}
+
+.dark-mode .hero {
+  background-image: url(./images/bg-mobile-dark.jpg);
 }
 
 .header > h1 {
@@ -40,6 +47,29 @@ body {
   color: #d8d8d8;
 }
 
+/* .lightDarkToggle {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  cursor: pointer;
+} */
+
+.sun-icon {
+  display: block;
+}
+
+.moon-icon {
+  display: none;
+}
+
+.dark-mode .moon-icon {
+  display: block;
+}
+
+.dark-mode .sun-icon {
+  display: none;
+}
+
 #todo {
   /* display: flex;
   justify-content: space-between; */
@@ -55,6 +85,9 @@ body {
   background-color: white;
   border-radius: 5px;
   text-indent: 40px;
+}
+.dark-mode #todo {
+  background-color: hsl(235, 24%, 19%);
 }
 
 #todoList {
@@ -91,6 +124,15 @@ body {
   transform: translateY(-50%);
 }
 
+.dark-mode #todoList {
+  background-color: hsl(235, 21%, 11%);
+  border-radius: 0px;
+}
+.dark-mode .list {
+  background-color: hsl(235, 24%, 19%);
+  color: grey;
+}
+
 .list-content {
   display: flex;
   align-items: flex-start;
@@ -100,6 +142,10 @@ body {
   color: #d8d8d8;
   /* margin-left: -78px; */
   font-size: 16px;
+}
+
+.dark-mode .list i {
+  color: hsl(234, 11%, 52%);
 }
 
 /* ///ADD DIV TO CIRCLE AND USE FLEX  */
@@ -123,11 +169,15 @@ body {
 .delete-btn {
   /* display: flex;
   justify-content: flex-end; */
-
   cursor: pointer;
   color: #d8d8d8;
   border: none;
   background-color: white;
+}
+
+.dark-mode .delete-btn {
+  background-color: hsl(235, 24%, 19%);
+  color: grey;
 }
 
 .domUpdates {
@@ -165,10 +215,19 @@ body {
   padding: 5px;
 }
 
+.dark-mode .domUpdates,
+.dark-mode .allActiveCompleted {
+  background-color: hsl(235, 24%, 19%);
+}
+
 .allActiveCompleted > button {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.dark-mode .allActiveCompleted > button {
+  color: grey;
 }
 
 .domUpdates > button {
@@ -185,6 +244,9 @@ body {
 
 .container {
   background-color: hsl(0, 0%, 98%);
+}
+.dark-mode .container {
+  background-color: hsl(235, 21%, 11%);
 }
 
 .dragAndDrop p {
@@ -203,6 +265,9 @@ body {
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+.dark-mode .attribution {
+  color: gray;
 }
 
 /* Styles for screens larger than 375px */
