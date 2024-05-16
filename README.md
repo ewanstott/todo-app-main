@@ -1,6 +1,15 @@
-# Todo app
+# Todo app | https://todo-app-ewan.netlify.app/
+---
 
 ![Design preview for the Todo app coding challenge](./design/desktop-preview.jpg)
+
+Tech: 
+- Vanilla JavaScript
+- CSS
+- Semantic HTML5 markup
+- Flexbox
+- Mobile-first workflow
+- Responsive
 
 Featuring:
 
